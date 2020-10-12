@@ -10,6 +10,13 @@ void GameState::tick() {
 }
 void GameState::render() {
 	map->render();
+	ofSetColor(255,255,0);
+	int PermanentX = 10;
+	int sum = 0;
+	for( int i = 0; i < lives;i++ ){
+		ofDrawCircle(PermanentX + sum, 20, 10);
+		sum += 20;
+	}
 }
 
 void GameState::keyPressed(int key){
