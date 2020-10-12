@@ -11,6 +11,9 @@ class GameState: public State{
 		void keyPressed(int key);
 		void mousePressed(int x, int y, int button);
 		void keyReleased(int key);
+		int PermanentX = 10;
+		int sum = 0;
+		int lives = 3;
 	
 	private:
 		ofImage mapImage;
