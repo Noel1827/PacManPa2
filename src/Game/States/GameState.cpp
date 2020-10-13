@@ -13,11 +13,13 @@ void GameState::tick()
 void GameState::render()
 {
 	map->render();
-	ofSetColor(255, 255, 0);
-	int PermanentX = 10;
-	int sum = 0;
+	ofSetColor(0, 255, 0);
+	PermanentX = 10;
+	sum = 0;
+	// draws Pacman's lives
 	for (int i = 0; i < lives; i++)
 	{
+		// sets the colors to red, green, or yellow dependind on pacman's life
 		switch (lives)
 		{
 		case 1:
@@ -38,9 +40,15 @@ void GameState::render()
 void GameState::keyPressed(int key)
 {
 	map->keyPressed(key);
-	if (key == 'n')
+	// 'M' reduces lives, 'n' adds to lives
+	switch (key)
 	{
+	case 'n':
+		lives++;
+		break;
+	case 'm':
 		lives--;
+		break;
 	}
 }
 

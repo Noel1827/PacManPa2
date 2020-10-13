@@ -2,20 +2,21 @@
 #include "Player.h"
 #include "MapBuilder.h"
 
-class GameState: public State{
-    public: 
-        GameState();
-		void reset();
-		void tick();
-		void render();
-		void keyPressed(int key);
-		void mousePressed(int x, int y, int button);
-		void keyReleased(int key);
-		int PermanentX = 10;
-		int sum = 0;
-		int lives = 3;
-	
-	private:
-		ofImage mapImage;
-		Map* map;
+class GameState : public State
+{
+public:
+	GameState();
+	void reset();
+	void tick();
+	void render();
+	void keyPressed(int key);
+	void mousePressed(int x, int y, int button);
+	void keyReleased(int key);
+	int PermanentX;
+	int sum;
+	int lives = 3;
+
+private:
+	ofImage mapImage;
+	Map *map;
 };
