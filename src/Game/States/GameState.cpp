@@ -19,7 +19,7 @@ void GameState::render()
 	// draws Pacman's lives
 	for (int i = 0; i < lives; i++)
 	{
-		// sets the colors to red, green, or yellow dependind on pacman's life
+		// sets the colors to red, green, or yellow depending on pacman's life
 		switch (lives)
 		{
 		case 1:
@@ -47,8 +47,14 @@ void GameState::keyPressed(int key)
 		lives++;
 		break;
 	case 'm':
-		lives--;
-		break;
+		// this switch is so that the integer lives won't be negative
+		switch (lives)
+		{
+		case 0:
+			break;
+		default:
+			lives--;
+		}
 	}
 }
 
