@@ -61,6 +61,7 @@ void Player::tick(){
 
 void Player::render(){
     ofSetColor(256,256,256);
+    ofDrawBitmapString("Score:" + to_string(score),ofGetWidth()-100,20);
     // ofDrawRectangle(getBounds());
     if(facing == UP){
         walkUp->getCurrentFrame().draw(x, y, width, height);
@@ -133,6 +134,11 @@ void Player::checkCollisions(){
         if(collides(entity)){
             if(dynamic_cast<Dot*>(entity) || dynamic_cast<BigDot*>(entity)){
                 entity->remove = true;
+            }
+            if(dynamic_cast<Dot*>(entity)){
+                score+= 10;
+            }else if( dynamic_cast<BigDot*>(entity)){
+                score += 20;
             }
         }
     }
