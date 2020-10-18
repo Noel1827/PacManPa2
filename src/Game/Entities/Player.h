@@ -1,6 +1,9 @@
 #pragma once
 #include "Animation.h"
-
+#include "Dot.h"
+#include "BigDot.h"
+#include "Ghost.h"
+#include "MapBuilder.h"
 #include "EntityManager.h"
 
 enum FACING {

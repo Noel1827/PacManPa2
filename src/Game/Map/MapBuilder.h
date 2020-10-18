@@ -3,6 +3,7 @@
 #include "Dot.h"
 #include "BigDot.h"
 #include "Ghost.h"
+#include "GhostSpawner.h"
 
 class MapBuilder {
     public:

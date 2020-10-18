@@ -62,8 +62,8 @@ Map* MapBuilder::createMap(ofImage mapImage){
                 Player* PacMan = new Player(xPos,yPos,pixelMultiplier,pixelMultiplier, entityManager);
 				mapInCreation->setPlayer(PacMan);
             }else if(currentPixel == ghostC){
-                Ghost* ghost = new Ghost(xPos,yPos,pixelMultiplier,pixelMultiplier,pacmanSpriteSheet);
-                mapInCreation->addEntity(ghost);
+                GhostSpawner* GhostSpawn = new GhostSpawner(xPos,yPos,pixelMultiplier,pixelMultiplier,pacmanSpriteSheet);
+                mapInCreation->addEntity(GhostSpawn);
             }else if(currentPixel == dotC){
                 Dot* dot = new Dot(xPos,yPos,pixelMultiplier,pixelMultiplier, pacmanSpriteSheet);
                 mapInCreation->addEntity(dot);
@@ -159,4 +159,5 @@ ofImage MapBuilder::getSprite(ofImage mapImage, int i, int j){
 
 		return  bound[0];
 	}
+
 }
