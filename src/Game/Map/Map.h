@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "GhostSpawner.h"
 
 class Map{
     public:
@@ -11,8 +12,10 @@ class Map{
       void keyPressed(int key);
 		  void mousePressed(int x, int y, int button);
 		  void keyReleased(int key);
+      void setGhostSpawner(GhostSpawner*);
 
     private:
       EntityManager *entityManager;
       Player *player;
+      GhostSpawner *ghostSpawner;
 };

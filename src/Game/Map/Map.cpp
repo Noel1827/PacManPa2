@@ -18,6 +18,7 @@ void Map::render(){
 
 void Map::keyPressed(int key){
 	player->keyPressed(key);
+	ghostSpawner->keyPressed(key);
 }
 
 void Map::mousePressed(int x, int y, int button){
@@ -35,5 +36,9 @@ void Map::addEntity(Entity* e){
 }
 void Map::setPlayer(Player* p){
     player = p;
+}
+
+void Map::setGhostSpawner(GhostSpawner* g){
+	ghostSpawner = g;
 }
 

@@ -1,4 +1,8 @@
 #include "Player.h"
+#include "Dot.h"
+#include "BigDot.h"
+#include "Ghost.h"
+#include "MapBuilder.h"
 
 Player::Player(int x, int y, int width, int height, EntityManager* em) : Entity(x, y, width, height){
     sprite.load("images/pacman.png");
@@ -87,10 +91,6 @@ void Player::keyPressed(int key){
             setFacing(RIGHT);
             break;
     }
-    if(key == 'g'){
-    Ghost* GhostR = new Ghost(1024 / 2 ,768 / 2, 16, 16, pacmanSpriteSheet);
-    em->entities.push_back(GhostR);
- }
 }
 
 void Player::keyReleased(int key){
