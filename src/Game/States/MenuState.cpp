@@ -12,7 +12,7 @@ void MenuState::tick() {
 	}
 }
 void MenuState::render() {
-	ofSetBackgroundColor(230, 230, 250);
+	ofBackgroundGradient(ofColor(0), ofColor(0,0,255));
 	startButton->render();
 }
 
