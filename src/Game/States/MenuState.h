@@ -9,6 +9,7 @@ private:
 	ofImage pacman;
 	ofSoundPlayer pacmanS;
 	Button *startButton;
+	bool loop = true;
 
 public:
 	MenuState();
