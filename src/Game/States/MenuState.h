@@ -6,6 +6,8 @@
 class MenuState : public State {
 private:
 	ofImage img1;
+	ofImage pacman;
+	ofSoundPlayer pacmanS;
 	Button *startButton;
 
 public:

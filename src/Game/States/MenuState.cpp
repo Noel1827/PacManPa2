@@ -2,17 +2,21 @@
 
 MenuState::MenuState() {
 	startButton = new Button(ofGetWidth()/2, ofGetHeight()/2, 64, 50, "Start");
+	pacman.load("images/pacmanM.jpg");
+	pacmanS.load("images/pacmanS.wav");
+	pacmanS.play();
 }
 void MenuState::tick() {
+	pacmanS.setLoop(true);
 	startButton->tick();
 	if(startButton->wasPressed()){
 		setNextState("Game");
 		setFinished(true);
-
 	}
 }
 void MenuState::render() {
-	ofBackgroundGradient(ofColor(0), ofColor(0,0,255));
+	 ofSetColor(256,256,256);
+	pacman.draw(0,0,ofGetWidth(), ofGetHeight());
 	startButton->render();
 }
 
