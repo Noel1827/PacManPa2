@@ -7,7 +7,6 @@ MenuState::MenuState() {
 	pacmanS.play();
 }
 void MenuState::tick() {
-	pacmanS.setLoop(true);
 	startButton->tick();
 	if(startButton->wasPressed()){
 		setNextState("Game");
