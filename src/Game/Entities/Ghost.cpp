@@ -1,5 +1,13 @@
 #include "Ghost.h"
 
-Ghost::Ghost(int x, int y, int width, int height, ofImage spriteSheet): Entity(x, y, width, height){
-    sprite.cropFrom(spriteSheet,456,64,16,16);
+Ghost::Ghost(int x, int y, int width, int height, ofImage spriteSheet, string color): Entity(x, y, width, height){
+
+    if (color == "pink")
+        sprite.cropFrom(spriteSheet, 456, 81, 16, 16);
+    else if (color == "blue")
+        sprite.cropFrom(spriteSheet, 456, 98, 16, 16);
+    else if (color == "orange")
+        sprite.cropFrom(spriteSheet, 456, 113, 16, 16);
+    else
+        sprite.cropFrom(spriteSheet, 456, 64, 16, 16);
 }

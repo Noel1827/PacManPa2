@@ -3,6 +3,15 @@
 GhostSpawner::GhostSpawner(int x, int y, int width, int height, ofImage spriteSheet, EntityManager* em): Entity(x, y, width, height){
     sprite = spriteSheet;
     this->em = em;
+    Ghost *PinkGhost = new Ghost(x, y, width, height, sprite, "pink");
+    em->entities.push_back(PinkGhost);
+    Ghost *OrangeGhost = new Ghost(x, y, width, height, sprite, "orange");
+     em->entities.push_back(OrangeGhost);
+    Ghost *BlueGhost = new Ghost(x, y, width, height, sprite, "blue");
+     em->entities.push_back(BlueGhost);
+     Ghost *RedGhost = new Ghost(x,y, width, height, sprite, "red");
+     em->entities.push_back(RedGhost);
+    
 }
 
 void GhostSpawner::tick(){
@@ -15,7 +24,7 @@ void GhostSpawner:: render(){
 
 void GhostSpawner:: keyPressed(int key){
 if(key == 'g'){
-    Ghost* GhostR = new Ghost(x ,y, width, height, sprite);
-    em->entities.push_back(GhostR);
+    Ghost* GhostR = new Ghost(x ,y, width, height, sprite, "red");
+   em->entities.push_back(GhostR); 
  }
 }

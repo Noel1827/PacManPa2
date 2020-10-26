@@ -3,5 +3,5 @@
 
 class Ghost: public Entity{
     public:
-        Ghost(int, int, int, int, ofImage);
+        Ghost(int, int, int, int, ofImage, string);
 };
