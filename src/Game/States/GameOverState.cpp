@@ -28,8 +28,10 @@ void GameOverState::keyPressed(int key){
 
 void GameOverState::render()
 {
-    ofDrawBitmapString("Score:" + to_string(score),ofGetWidth()-100,20);
+    
     youdied.draw(0,0,ofGetWidth(), ofGetHeight());
+    ofSetColor(255,255,255);
+    ofDrawBitmapString("Score:" + to_string(score),ofGetWidth()-100,20);
     restartButton->render();
 }
 
