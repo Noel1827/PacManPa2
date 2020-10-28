@@ -8,6 +8,12 @@ GameState::GameState()
 }
 void GameState::tick()
 {
+	if (lives == 0)
+	{
+		setNextState("GameOverState");
+		setFinished(true);
+		lives = 3;
+	}
 	map->tick();
 }
 void GameState::render()
