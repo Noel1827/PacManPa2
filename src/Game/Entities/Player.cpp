@@ -40,6 +40,11 @@ Player::Player(int x, int y, int width, int height, EntityManager* em) : Entity(
     this->em = em;
     
 }
+
+// int Player::getScore(){
+//     return score;
+// }
+
 void Player::tick(){
     canMove = true;
     checkCollisions();

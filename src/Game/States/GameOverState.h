@@ -3,20 +3,21 @@
 #include "State.h"
 #include "Button.h"
 #include "GameState.h"
+#include "Player.h"
 
-class MenuState : public State {
+class GameOverState : public State{
 private:
-	ofImage img1;
-	ofImage pacman;
-	ofSoundPlayer pacmanS;
-	Button *startButton;
-	bool loop = true;
+Button * restartButton;
+// TESTING
+ofImage youdied;
 
 public:
-	MenuState();
+	GameOverState();
 	void tick();
-	void render();
+	 void render();
 	void keyPressed(int key);
 	void mousePressed(int x, int y, int button);
 	void reset();
+
+ 
 };
