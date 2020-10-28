@@ -10,6 +10,7 @@ void GameState::tick()
 {
 	if (lives == 0)
 	{
+		finalScore = map->getPlayer()->getScore();
 		setNextState("GameOverState");
 		setFinished(true);
 		lives = 3;
@@ -43,6 +44,9 @@ void GameState::render()
 	}
 }
 
+int GameState:: getScore(){
+	return finalScore;
+}
 void GameState::keyPressed(int key)
 {
 	map->keyPressed(key);

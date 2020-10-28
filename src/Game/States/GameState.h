@@ -18,6 +18,7 @@ public:
 	int PermanentX;
 	int sum;
 	int lives = 3;
+	int finalScore;
 
 private:
 	ofImage mapImage;

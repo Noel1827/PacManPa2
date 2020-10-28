@@ -21,6 +21,10 @@ void Map::keyPressed(int key){
 	ghostSpawner->keyPressed(key);
 }
 
+Player* Map::getPlayer(){
+	return player;
+}
+
 void Map::mousePressed(int x, int y, int button){
 	player->mousePressed(x, y, button);
 }

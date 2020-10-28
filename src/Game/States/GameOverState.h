@@ -8,6 +8,7 @@
 class GameOverState : public State{
 private:
 Button * restartButton;
+int score;
 // TESTING
 ofImage youdied;
 
@@ -18,6 +19,7 @@ public:
 	void keyPressed(int key);
 	void mousePressed(int x, int y, int button);
 	void reset();
+	void setFinalScore(int score);
 
  
 };

@@ -41,9 +41,9 @@ Player::Player(int x, int y, int width, int height, EntityManager* em) : Entity(
     
 }
 
-// int Player::getScore(){
-//     return score;
-// }
+int Player::getScore(){
+    return score;
+}
 
 void Player::tick(){
     canMove = true;

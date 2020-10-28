@@ -8,6 +8,10 @@ GameOverState::GameOverState()
  
 }
 
+void GameOverState::setFinalScore(int score){
+this->score = score;
+}
+
 void GameOverState::tick()
 {
     restartButton->tick();
@@ -24,7 +28,7 @@ void GameOverState::keyPressed(int key){
 
 void GameOverState::render()
 {
-    // ofDrawBitmapString("Score:" + to_string(score),ofGetWidth()-100,20);
+    ofDrawBitmapString("Score:" + to_string(score),ofGetWidth()-100,20);
     youdied.draw(0,0,ofGetWidth(), ofGetHeight());
     restartButton->render();
 }
