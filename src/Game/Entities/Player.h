@@ -13,7 +13,10 @@ enum FACING {
 class Player: public Entity{
 
     private:
-        int health;
+    int PermanentX;
+	int sum;
+	int health = 3;
+    // Cambiar los lives a "health "
         int score = 0;
         bool canMove;
         int speed = 8;
@@ -27,8 +30,11 @@ class Player: public Entity{
         EntityManager* em;
 
     public:
+    
         Player(int, int, int , int, EntityManager*);
         int getHealth();
+        void die();
+        void SetHealth(int health);
         int getScore();
         void tick();
         void render();

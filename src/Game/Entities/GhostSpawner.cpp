@@ -13,6 +13,7 @@ GhostSpawner::GhostSpawner(int x, int y, int width, int height, ofImage spriteSh
      em->entities.push_back(PinkGhost);
     
 }
+// ARREGLA EL DIIIIIIIEEEEEEEEEEEEE METHOD EN PLAYERRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
 
 void GhostSpawner::tick(){
    // Can make ghost respawn if dead
