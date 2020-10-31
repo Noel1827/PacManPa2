@@ -15,9 +15,6 @@ public:
 	void keyReleased(int key);
 	int getScore();
 	// int getlives();
-	int PermanentX;
-	int sum;
-	int lives = 3;
 	int finalScore;
 
 private:

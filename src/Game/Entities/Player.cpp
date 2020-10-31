@@ -66,8 +66,9 @@ void Player::tick(){
 }
 
 void Player::render(){
-    ofSetColor(256,256,256);
-    ofDrawBitmapString("Score:" + to_string(score),ofGetWidth()-100,20);
+    ofSetColor(256, 256, 256);
+    ofDrawBitmapString("Score:" + to_string(score), ofGetWidth() - 100, 20);
+    // ofSetColor(0, 255, 0);
     // ofDrawRectangle(getBounds());
     if(facing == UP){
         walkUp->getCurrentFrame().draw(x, y, width, height);
@@ -79,22 +80,58 @@ void Player::render(){
     }else if(facing == RIGHT){
         walkRight->getCurrentFrame().draw(x, y, width, height);
     }
+
+    PermanentX = 10;
+    sum = 0;
+    // draws Pacman's lives
+    for (int i = 0; i < health; i++)
+    {
+        // sets the colors to red, green, or yellow depending on pacman's life
+        switch (health)
+        {
+        case 1:
+            ofSetColor(255, 0, 0);
+            break;
+        case 2:
+            ofSetColor(255, 255, 0);
+            break;
+        case 3:
+            ofSetColor(0, 255, 0);
+            break;
+        }
+        ofDrawCircle(PermanentX + sum, 20, 10);
+        sum += 20;
+    }
 }
 
-void Player::keyPressed(int key){
-    switch(key){
-        case 'w':
-            setFacing(UP);
+void Player::keyPressed(int key)
+{
+    switch (key)
+    {
+    case 'w':
+        setFacing(UP);
+        break;
+    case 's':
+        setFacing(DOWN);
+        break;
+    case 'a':
+        setFacing(LEFT);
+        break;
+    case 'd':
+        setFacing(RIGHT);
+        break;
+    case 'n':
+        health++;
+        break;
+    case 'm':
+        // this switch is so that the integer lives won't be negative
+        switch (health)
+        {
+        case 0:
             break;
-        case 's':
-            setFacing(DOWN);
-            break;
-        case 'a':
-            setFacing(LEFT);
-            break;
-        case 'd':
-            setFacing(RIGHT);
-            break;
+        default:
+            health--;
+        }
     }
 }
 
@@ -149,4 +186,16 @@ void Player::checkCollisions(){
         }
     }
     
+}
+
+void Player::die(){
+    health--;
+}
+
+int Player::getHealth(){
+    return health;
+}
+
+void Player::SetHealth(int health){
+    this->health = health;
 }
