@@ -14,6 +14,7 @@ void GameState::tick()
 		setNextState("GameOverState");
 		setFinished(true);
 		map->getPlayer()->SetHealth(3);
+		map = MapBuilder().createMap(mapImage);
 	}
 	map->tick();
 }
