@@ -10,4 +10,8 @@ Ghost::Ghost(int x, int y, int width, int height, ofImage spriteSheet, string co
         sprite.cropFrom(spriteSheet, 456, 113, 16, 16);
     else
         sprite.cropFrom(spriteSheet, 456, 64, 16, 16);
+     
 }
+
+// Dark blue sprite.cropFrom(spriteSheet, 584, 64, 16,16);
+// White ghosts sprite.cropFrom(spriteSheet, 617, 64, 16,16);
