@@ -11,6 +11,7 @@ Button * restartButton;
 int score;
 // TESTING
 ofImage youdied;
+ofSoundPlayer gameOver;
 
 public:
 	GameOverState();

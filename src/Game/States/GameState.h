@@ -17,7 +17,10 @@ public:
 	// int getlives();
 	int finalScore;
 
+
 private:
 	ofImage mapImage;
+	ofSoundPlayer gameMusic;
 	Map *map;
+	bool loop = true;
 };

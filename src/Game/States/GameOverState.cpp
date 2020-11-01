@@ -5,7 +5,8 @@ GameOverState::GameOverState()
     // cuanto toques el RE del restart no funcionará
     restartButton = new Button(ofGetWidth() / 2, ofGetHeight() / 2, 64, 50, "Restart");
     youdied.load("images/you-died.png");
- 
+    gameOver.load("images/gameOver.mp3");
+    // gameOver.play();
 }
 
 void GameOverState::setFinalScore(int score){
@@ -28,7 +29,6 @@ void GameOverState::keyPressed(int key){
 
 void GameOverState::render()
 {
-    
     youdied.draw(0,0,ofGetWidth(), ofGetHeight());
     ofSetColor(255,255,255);
     ofDrawBitmapString("Score:" + to_string(score),ofGetWidth()-100,20);
