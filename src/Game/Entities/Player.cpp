@@ -121,7 +121,8 @@ void Player::keyPressed(int key)
         setFacing(RIGHT);
         break;
     case 'n':
-        health++;
+    die();
+        // health++;
         break;
     case 'm':
         // this switch is so that the integer lives won't be negative
@@ -190,6 +191,8 @@ void Player::checkCollisions(){
 
 void Player::die(){
     health--;
+    this->x = RESPAWNXPOS;
+    this->y = RESPAWNYPOS;
 }
 
 int Player::getHealth(){

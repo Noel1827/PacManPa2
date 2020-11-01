@@ -16,6 +16,8 @@ class Player: public Entity{
     int PermanentX;
 	int sum;
 	int health = 3;
+    const int RESPAWNXPOS = 312;
+    const int RESPAWNYPOS = 624;
     // Cambiar los lives a "health "
         int score = 0;
         bool canMove;

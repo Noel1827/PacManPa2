@@ -2,10 +2,10 @@
 
 GameOverState::GameOverState()
 {
-    // cuanto toques el RE del restart no funcionará
-    restartButton = new Button(ofGetWidth() / 2, ofGetHeight() / 2, 64, 50, "Restart");
+    // cuanto toques el RE del restart no funcionará, tiene coordenadas de "start"
+    restartButton = new Button(ofGetWidth() / 2, ofGetHeight() / 2, 53, 50, "Restart");
     youdied.load("images/you-died.png");
-    gameOver.load("images/gameOver.mp3");
+    // gameOver.load("images/gameOver.mp3");
     // gameOver.play();
 }
 
