@@ -23,6 +23,7 @@ class Player: public Entity{
         bool canMove;
         int speed = 8;
         bool walking = false;
+        bool eatGhost = false;
         FACING facing = DOWN;
         ofImage up, down, left, right;
         Animation *walkUp;
