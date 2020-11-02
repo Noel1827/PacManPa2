@@ -184,6 +184,10 @@ void Player::checkCollisions(){
             }else if( dynamic_cast<BigDot*>(entity)){
                 score += 20;
             }
+            else if(dynamic_cast<Ghost*>(entity)){
+                die();
+            }
+
         }
     }
     
