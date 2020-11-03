@@ -25,7 +25,26 @@ void GhostSpawner:: render(){
 
 void GhostSpawner:: keyPressed(int key){
 if(key == 'g'){
-    Ghost* GhostR = new Ghost(x ,y, width, height, sprite, "red");
-   em->entities.push_back(GhostR); 
+  int random = ofRandom(4);
+  if (random == 0)
+  {
+      Ghost *RedGhost = new Ghost(x, y, width, height, sprite, "red");
+    em->entities.push_back(RedGhost);
+  }
+  else if (random == 1)
+  {
+     Ghost *OrangeGhost = new Ghost(x, y, width, height, sprite, "orange");
+     em->entities.push_back(OrangeGhost);
+  }
+  else if (random == 2)
+  {
+      Ghost *BlueGhost = new Ghost(x, y, width, height, sprite, "blue");
+     em->entities.push_back(BlueGhost);
+  }
+  else if (random == 3)
+  {
+    Ghost *PinkGhost = new Ghost(x,y, width, height, sprite, "pink");
+     em->entities.push_back(PinkGhost);
+  }
  }
 }
