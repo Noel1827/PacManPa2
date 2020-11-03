@@ -3,7 +3,7 @@
 GameOverState::GameOverState()
 {
     // cuanto toques el RE del restart no funcionará, tiene coordenadas de "start"
-    restartButton = new Button(ofGetWidth() / 2, ofGetHeight() / 2, 53, 50, "Restart");
+    restartButton = new Button(0, 0, ofGetWidth(), ofGetHeight(), "Click Anywhere To Start");
     youdied.load("images/you-died.png");
     // gameOver.load("images/gameOver.mp3");
     // gameOver.play();
@@ -18,7 +18,6 @@ void GameOverState::tick()
     restartButton->tick();
     if (restartButton->wasPressed())
     {
-        // score = 0;
         setNextState("Game");
         setFinished(true);
     }
