@@ -48,7 +48,7 @@ int Player::getScore(){
 void Player::tick(){
     if(eatGhost == true){
         counter++;
-        if(counter == 900){
+        if(counter == 450){
             eatGhost = false;
             counter = 0;
         }
@@ -189,7 +189,7 @@ void Player::checkCollisions(){
             if(dynamic_cast<Dot*>(entity)){
                 score+= 10;
             }else if( dynamic_cast<BigDot*>(entity)){
-                score += 20;
+                score += 50;
                 eatGhost = true;
                 counter = 0;
             }
