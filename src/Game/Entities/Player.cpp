@@ -46,6 +46,13 @@ int Player::getScore(){
 }
 
 void Player::tick(){
+    if(eatGhost == true){
+        counter++;
+        if(counter == 900){
+            eatGhost = false;
+            counter = 0;
+        }
+    }
     canMove = true;
     checkCollisions();
     if(canMove){
@@ -184,6 +191,7 @@ void Player::checkCollisions(){
             }else if( dynamic_cast<BigDot*>(entity)){
                 score += 20;
                 eatGhost = true;
+                counter = 0;
             }
             else if(dynamic_cast<Ghost*>(entity)){
                 if(eatGhost == false){

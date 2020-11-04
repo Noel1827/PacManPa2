@@ -8,7 +8,7 @@
 class GameOverState : public State{
 private:
 Button * restartButton;
-int score;
+long int score;
 // TESTING
 ofImage youdied;
 ofSoundPlayer gameOver;
