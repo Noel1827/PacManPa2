@@ -15,4 +15,5 @@ public:
 
 private:
     EntityManager *em;
+    int ghostCounter = 0;
 };

@@ -5,7 +5,7 @@ Ghost::Ghost(int x, int y, int width, int height, ofImage spriteSheet, string co
     if (color == "pink")
         sprite.cropFrom(spriteSheet, 456, 81, 16, 16);
     else if (color == "blue")
-        sprite.cropFrom(spriteSheet, 456, 98, 16, 16);
+        sprite.cropFrom(spriteSheet, 456, 96, 16, 16);
     else if (color == "orange")
         sprite.cropFrom(spriteSheet, 456, 113, 16, 16);
     else
