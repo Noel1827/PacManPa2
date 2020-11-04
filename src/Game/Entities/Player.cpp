@@ -75,8 +75,6 @@ void Player::tick(){
 void Player::render(){
     ofSetColor(256, 256, 256);
     ofDrawBitmapString("Score:" + to_string(score), ofGetWidth() - 100, 20);
-    // ofSetColor(0, 255, 0);
-    // ofDrawRectangle(getBounds());
     if(facing == UP){
         walkUp->getCurrentFrame().draw(x, y, width, height);
         
@@ -109,6 +107,8 @@ void Player::render(){
         ofDrawCircle(PermanentX + sum, 20, 10);
         sum += 20;
     }
+    ofSetColor(248,171,186);
+    ofDrawBitmapString("Press 'f' to ignore all bounds, Pac-Man can still die",0, 45);
 }
 
 void Player::keyPressed(int key)
@@ -128,8 +128,11 @@ void Player::keyPressed(int key)
         setFacing(RIGHT);
         break;
     case 'n':
-    die();
+        die();
         // health++;
+        break;
+    case 'f':
+        trespassing = !trespassing;
         break;
     case 'm':
         // this switch is so that the integer lives won't be negative
@@ -157,6 +160,7 @@ void Player::setFacing(FACING facing){
 }
 
 void Player::checkCollisions(){
+    if(trespassing == false){
     for(Block* block: em->blocks){
         switch(facing){
             case UP:
@@ -180,6 +184,10 @@ void Player::checkCollisions(){
                 }
                 break;
         }
+    }
+    }
+    else if(trespassing == true){
+        canMove = true;
     }
     for(Entity* entity:em->entities){
         if(collides(entity)){
