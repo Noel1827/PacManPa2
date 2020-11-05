@@ -6,7 +6,7 @@ GameState::GameState()
 	mapImage.load("images/map1.png");
 	map = MapBuilder().createMap(mapImage);
 	gameMusic.load("images/gameMusic.wav");
-	gameMusic.play();
+	// gameMusic.play();
 
 }
 void GameState::tick()

@@ -26,52 +26,43 @@ Ghost::Ghost(int x, int y, int width, int height, ofImage spriteSheet, string co
 
 void Ghost::checkCollisions()
 {
-    // for (Block *block : em->blocks)
-    // {
-    //     switch (Gfacing)
-    //     {
-    //     case GUP:
-    //         if (this->getBounds(x, y - speed).intersects(block->getBounds()))
-    //         {
-    //             canMove = false;
-    //         }
-    //         break;
-    //     case GDOWN:
-    //         if (this->getBounds(x, y + speed).intersects(block->getBounds()))
-    //         {
-    //             canMove = false;
-    //         }
-    //         break;
-    //     case GLEFT:
-    //         if (this->getBounds(x - speed, y).intersects(block->getBounds()))
-    //         {
-    //             canMove = false;
-    //         }
-    //         break;
-    //     case GRIGHT:
-    //         if (this->getBounds(x + speed, y).intersects(block->getBounds()))
-    //         {
-    //             canMove = false;
-    //         }
-    //         break;
-    //     }
-    // }
-    for (Entity *entity : em->entities)
+    for (Block* block : em->blocks)
     {
-        if (collides(entity))
+        switch (Gfacing)
         {
-            if (dynamic_cast<BigDot *>(entity))
+        case GUP:
+            if (this->getBounds(x, y - speed).intersects(block->getBounds()))
             {
-                GhostFlash = true;
+                canMove = false;
             }
+            break;
+        case GDOWN:
+            if (this->getBounds(x, y + speed).intersects(block->getBounds()))
+            {
+                canMove = false;
+            }
+            break;
+        case GLEFT:
+            if (this->getBounds(x - speed, y).intersects(block->getBounds()))
+            {
+                canMove = false;
+            }
+            break;
+        case GRIGHT:
+            if (this->getBounds(x + speed, y).intersects(block->getBounds()))
+            {
+                canMove = false;
+            }
+            break;
         }
     }
+ 
 }
 
 void Ghost::move()
 {
     canMove = true;
-    //  checkCollisions();
+     checkCollisions();
     if (canMove)
     {
         if (Gfacing == GUP)
@@ -113,9 +104,9 @@ void Ghost::tick()
     }
 }
 
-// void Ghost::render(){
-//     em->render();
-// }
+void Ghost::render(){
+  Entity::render();
+}
 
 // Dark blue sprite.cropFrom(spriteSheet, 584, 64, 16,16);
 // White ghosts sprite.cropFrom(spriteSheet, 617, 64, 16,16);

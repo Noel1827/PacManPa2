@@ -4,7 +4,7 @@ MenuState::MenuState() {
 	startButton = new Button(ofGetWidth()/2, ofGetHeight()/2, 64, 50, "Start");
 	pacman.load("images/pacmanM.jpg");
 	pacmanS.load("images/pacmanS.wav");
-	pacmanS.play();
+	// pacmanS.play();
 }
 void MenuState::tick() {
 	pacmanS.setLoop(loop);
