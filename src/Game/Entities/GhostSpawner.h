@@ -3,6 +3,7 @@
 #include "EntityManager.h"
 #include "Ghost.h"
 
+
 class GhostSpawner : public Entity
 {
 public:

@@ -229,3 +229,7 @@ int Player::getHealth(){
 void Player::SetHealth(int health){
     this->health = health;
 }
+
+bool Player::geteatGhost(){
+    return eatGhost;
+}

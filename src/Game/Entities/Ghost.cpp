@@ -2,7 +2,7 @@
 
 Ghost::Ghost(int x, int y, int width, int height, ofImage spriteSheet, string color, EntityManager *em) : Entity(x, y, width, height)
 {
-    if (GhostFlash == false)
+    if (eatGhost == false)
     {
         if (color == "pink")
             sprite.cropFrom(spriteSheet, 456, 81, 16, 16);
@@ -13,7 +13,7 @@ Ghost::Ghost(int x, int y, int width, int height, ofImage spriteSheet, string co
         else
             sprite.cropFrom(spriteSheet, 456, 64, 16, 16);
     }
-    else if (GhostFlash == true)
+    else if (eatGhost == true)
     {
         if (white == true)
         {
@@ -26,36 +26,36 @@ Ghost::Ghost(int x, int y, int width, int height, ofImage spriteSheet, string co
 
 void Ghost::checkCollisions()
 {
-    for (Block* block : em->blocks)
-    {
-        switch (Gfacing)
-        {
-        case GUP:
-            if (this->getBounds(x, y - speed).intersects(block->getBounds()))
-            {
-                canMove = false;
-            }
-            break;
-        case GDOWN:
-            if (this->getBounds(x, y + speed).intersects(block->getBounds()))
-            {
-                canMove = false;
-            }
-            break;
-        case GLEFT:
-            if (this->getBounds(x - speed, y).intersects(block->getBounds()))
-            {
-                canMove = false;
-            }
-            break;
-        case GRIGHT:
-            if (this->getBounds(x + speed, y).intersects(block->getBounds()))
-            {
-                canMove = false;
-            }
-            break;
-        }
-    }
+//     for (Block* block : em->blocks)
+//     {
+//         switch (Gfacing)
+//         {
+//         case GUP:
+//             if (this->getBounds(x, y - speed).intersects(block->getBounds()))
+//             {
+//                 canMove = false;
+//             }
+//             break;
+//         case GDOWN:
+//             if (this->getBounds(x, y + speed).intersects(block->getBounds()))
+//             {
+//                 canMove = false;
+//             }
+//             break;
+//         case GLEFT:
+//             if (this->getBounds(x - speed, y).intersects(block->getBounds()))
+//             {
+//                 canMove = false;
+//             }
+//             break;
+//         case GRIGHT:
+//             if (this->getBounds(x + speed, y).intersects(block->getBounds()))
+//             {
+//                 canMove = false;
+//             }
+//             break;
+//         }
+//     }
  
 }
 
@@ -87,15 +87,9 @@ void Ghost::move()
 void Ghost::tick()
 {
     move();
-    if (GhostFlash == true)
+    if (eatGhost == true)
     {
         flashing++;
-        counter++;
-        if (counter == 450)
-        {
-            GhostFlash = false;
-            counter = 0;
-        }
         if (flashing == 30)
         {
             white = !white;
@@ -106,6 +100,10 @@ void Ghost::tick()
 
 void Ghost::render(){
   Entity::render();
+}
+
+void Ghost::setEatGhost(bool eatGhost){
+   this->eatGhost = eatGhost;
 }
 
 // Dark blue sprite.cropFrom(spriteSheet, 584, 64, 16,16);

@@ -22,6 +22,7 @@ void GameState::tick()
 		map->getPlayer()->SetHealth(3);
 		map = MapBuilder().createMap(mapImage);
 	}
+
 	map->tick();
 }
 void GameState::render()

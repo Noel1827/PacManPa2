@@ -18,13 +18,14 @@ private:
     GhostFACING Gfacing = GUP;
     int speed = 8;
     EntityManager *em;
-    bool GhostFlash = false;
+    bool eatGhost = false;
     bool white;
     int counter = 0;
     int flashing = 0;
 
 public:
     Ghost(int, int, int, int, ofImage, string, EntityManager *);
+    void setEatGhost(bool eatGhost);
     void tick();
     void render();
     void move();

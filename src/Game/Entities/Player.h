@@ -1,6 +1,5 @@
 #pragma once
 #include "Animation.h"
-
 #include "EntityManager.h"
 
 enum FACING {
@@ -38,6 +37,7 @@ class Player: public Entity{
     
         Player(int, int, int , int, EntityManager*);
         int getHealth();
+        bool geteatGhost();
         void die();
         void SetHealth(int health);
         int getScore();
