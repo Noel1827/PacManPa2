@@ -3,6 +3,7 @@
 #include "EntityManager.h"
 #include "Player.h"
 #include "BigDot.h"
+#include "Animation.h"
 
 enum GhostFACING{
     GUP,
@@ -16,12 +17,13 @@ class Ghost: public Entity{
 private:
     bool canMove;
     GhostFACING Gfacing = GUP;
-    int speed = 8;
+    int speed = 1;
     EntityManager *em;
-    bool eatGhost = false;
+    bool eatGhost;
     bool white;
     int counter = 0;
     int flashing = 0;
+    // Animation flashing;
 
 public:
     Ghost(int, int, int, int, ofImage, string, EntityManager *);

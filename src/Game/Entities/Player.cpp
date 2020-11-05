@@ -199,6 +199,7 @@ void Player::checkCollisions(){
             }else if( dynamic_cast<BigDot*>(entity)){
                 score += 50;
                 eatGhost = true;
+                em->seteatGhost(eatGhost);
                 counter = 0;
             }
             else if(dynamic_cast<Ghost*>(entity)){

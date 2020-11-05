@@ -26,3 +26,12 @@ void EntityManager::render(){
         block->render();
     }
 }
+void EntityManager::seteatGhost(bool flashing)
+{
+    this->flashing = flashing;
+}
+
+bool EntityManager::geteatGhost()
+{
+    return flashing;
+}
