@@ -26,6 +26,7 @@ private:
 public:
     Ghost(int, int, int, int, ofImage, string, EntityManager *);
     void tick();
+    void move();
     void checkCollisions();
         
 };

@@ -62,68 +62,60 @@ void Ghost::checkCollisions()
         {
             if (dynamic_cast<BigDot *>(entity))
             {
-                GhostFlash  = true;
+                GhostFlash = true;
             }
         }
     }
 }
 
-    void Ghost::tick()
+void Ghost::move()
+{
+    canMove = true;
+    //  checkCollisions();
+    if (canMove)
     {
-        if (GhostFlash == true)
+        if (Gfacing == GUP)
         {
-            flashing++;
-            counter++;
-            if (counter == 450)
-            {
-                GhostFlash = false;
-                counter = 0;
-            }
-            if(flashing == 30){
-                white = !white;
-                flashing = 0;
-            }
-         
+            y -= speed;
         }
-
-// -------------------------------------------------------------------------
-         canMove = true;
-        //  checkCollisions();
-        if (canMove)
+        else if (Gfacing == GDOWN)
         {
-            if (Gfacing == GUP)
-            {
-                y -= speed;
-            }
-            else if (Gfacing == GDOWN)
-            {
-                y += speed;
-            }
-            else if (Gfacing == GLEFT)
-            {
-                x -= speed;
-
-            }
-            else if (Gfacing == GRIGHT)
-            {
-                x += speed;
-            }
+            y += speed;
+        }
+        else if (Gfacing == GLEFT)
+        {
+            x -= speed;
+        }
+        else if (Gfacing == GRIGHT)
+        {
+            x += speed;
         }
     }
+}
 
+void Ghost::tick()
+{
+    move();
+    if (GhostFlash == true)
+    {
+        flashing++;
+        counter++;
+        if (counter == 450)
+        {
+            GhostFlash = false;
+            counter = 0;
+        }
+        if (flashing == 30)
+        {
+            white = !white;
+            flashing = 0;
+        }
+    }
+}
 
-    // void Ghost::render(){
-    //     em->render();
-    // }
+// void Ghost::render(){
+//     em->render();
+// }
 
-    
-
-    // Dark blue sprite.cropFrom(spriteSheet, 584, 64, 16,16);
-    // White ghosts sprite.cropFrom(spriteSheet, 617, 64, 16,16);
-
-
-
-
-
-
-
+// Dark blue sprite.cropFrom(spriteSheet, 584, 64, 16,16);
+// White ghosts sprite.cropFrom(spriteSheet, 617, 64, 16,16);
