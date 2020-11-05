@@ -8,7 +8,10 @@ public:
 
 	std::vector<Entity*> entities;
 	std::vector<Block*> blocks;
+	bool flashing;
 	void tick();
 	void render();
+	bool geteatGhost();
+	void seteatGhost(bool flashing);
 
 };
