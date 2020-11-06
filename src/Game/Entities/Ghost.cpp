@@ -1,80 +1,90 @@
 #include "Ghost.h"
 
-
 Ghost::Ghost(int x, int y, int width, int height, ofImage spriteSheet, string color, EntityManager *em) : Entity(x, y, width, height)
 {
-    eatGhost = em->geteatGhost();
     this->em = em;
-    if (eatGhost == false)
-    {
-        if (color == "pink")
-            sprite.cropFrom(spriteSheet, 456, 81, 16, 16);
-        else if (color == "blue")
-            sprite.cropFrom(spriteSheet, 456, 96, 16, 16);
-        else if (color == "orange")
-            sprite.cropFrom(spriteSheet, 456, 113, 16, 16);
-        else
-            sprite.cropFrom(spriteSheet, 456, 64, 16, 16);
-    }
-    else if (eatGhost == true)
-    {
-        if (white == true)
-        {
-            sprite.cropFrom(spriteSheet, 617, 64, 16, 16);
-        }
-        else
-            sprite.cropFrom(spriteSheet, 584, 64, 16, 16);
-    }
+
+    if (color == "pink")
+        originalSprite.cropFrom(spriteSheet, 456, 81, 16, 16);
+    else if (color == "blue")
+        originalSprite.cropFrom(spriteSheet, 456, 96, 16, 16);
+    else if (color == "orange")
+        originalSprite.cropFrom(spriteSheet, 456, 113, 16, 16);
+    else
+        originalSprite.cropFrom(spriteSheet, 456, 64, 16, 16);
+
+    white.cropFrom(spriteSheet, 617, 64, 16, 16);
+    blue.cropFrom(spriteSheet, 584, 64, 16, 16);
+    sprite = originalSprite;
 }
 
 void Ghost::tick()
 {
-     canMove = true;
+
+    if (em->eatGhost)
+    {
+        
+        
+        if (flashing < 15)
+        {
+            sprite = blue;
+        }
+        else sprite = white;
+        flashing = (flashing >= 30) ? 0 : flashing + 1;
+    }
+    else sprite = originalSprite;
+
+    canMove = true;
     checkCollisions();
-   
+
     if (canMove)
     {
-        if (Gfacing == GUP){
+        if (Gfacing == GUP)
+        {
             y -= speed;
         }
-        else if (Gfacing == GDOWN){
+        else if (Gfacing == GDOWN)
+        {
             y += speed;
         }
-        else if (Gfacing == GLEFT){
+        else if (Gfacing == GLEFT)
+        {
             x -= speed;
         }
-        else if (Gfacing == GRIGHT){
+        else if (Gfacing == GRIGHT)
+        {
             x += speed;
         }
-    }else{
+    }
+    else
+    {
 
         int random = ofRandom(4);
-        if(random == 0){
+        if (random == 0)
+        {
             Gfacing = GUP;
-        } else if(random == 1){
+        }
+        else if (random == 1)
+        {
             Gfacing = GDOWN;
-        }else if(random == 2){
+        }
+        else if (random == 2)
+        {
             Gfacing = GLEFT;
-        }else if(random == 3){
+        }
+        else if (random == 3)
+        {
             Gfacing = GRIGHT;
         }
     }
+
     
-    // if (eatGhost == true)
-    // {
-    //     flashing++;
-    //     if (flashing == 30)
-    //     {
-    //         white = !white;
-    //         flashing = 0;
-    //     }
-    // }
 }
 
 void Ghost::checkCollisions()
 {
-         
-    for (Block* block : this->em->blocks)
+
+    for (Block *block : this->em->blocks)
     {
         switch (Gfacing)
         {
@@ -104,7 +114,6 @@ void Ghost::checkCollisions()
             break;
         }
     }
-    
 }
 
 // void Ghost::move()
@@ -138,15 +147,15 @@ void Ghost::checkCollisions()
 //             Gfacing = GRIGHT;
 //         }
 //     }
-    
+
 // }
 
+void Ghost::render()
+{
+    
+    Entity::render();
 
-
-void Ghost::render(){
-  Entity::render();
 }
-
 
 // Dark blue sprite.cropFrom(spriteSheet, 584, 64, 16,16);
 // White ghosts sprite.cropFrom(spriteSheet, 617, 64, 16,16);
