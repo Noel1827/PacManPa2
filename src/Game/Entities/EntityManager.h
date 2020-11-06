@@ -13,5 +13,6 @@ public:
 	bool geteatGhost();
 	void seteatGhost(bool flashing);
 	bool eatGhost = false;
+	int GhostCounter;
 
 };

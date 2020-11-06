@@ -208,7 +208,8 @@ void Player::checkCollisions(){
                 else if(em->eatGhost == true){
                     entity->remove = true;
                     score += 200;
-                    GhostSpawner::ghostCounter++;
+                    // GhostSpawner::ghostCounter++;
+                    em->GhostCounter++;
                 }
             }
 

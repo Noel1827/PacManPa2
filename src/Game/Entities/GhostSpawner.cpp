@@ -12,16 +12,16 @@ GhostSpawner::GhostSpawner(int x, int y, int width, int height, ofImage spriteSh
      em->entities.push_back(BlueGhost);
      Ghost *PinkGhost = new Ghost(x,y, width, height, sprite, "pink", em);
      em->entities.push_back(PinkGhost);
-    ghostCounter = 0;
+    // ghostCounter = 0;
 }
 
 void GhostSpawner::tick(){
   // Can make ghost respawn if dead
   
-  ghostCounter++;
-  if (ghostCounter > 0)
+  
+  if (em->GhostCounter > 0)
   {
-    ghostCounter--;
+    em->GhostCounter--;
     int random = ofRandom(4);
     if (random == 0)
     {

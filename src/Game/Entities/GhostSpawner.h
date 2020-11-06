@@ -13,7 +13,6 @@ public:
     void keyPressed(int);
     void keyReleased(int);
     void mousePressed(int, int, int);
-    static int ghostCounter;
 
 private:
     EntityManager *em;
