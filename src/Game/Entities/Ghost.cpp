@@ -60,19 +60,19 @@ void Ghost::tick()
     {
 
         int random = ofRandom(4);
-        if (random == 0)
+        if (random == 0 && Gfacing !=GDOWN)
         {
             Gfacing = GUP;
         }
-        else if (random == 1)
+        else if (random == 1 && Gfacing !=GUP)
         {
             Gfacing = GDOWN;
         }
-        else if (random == 2)
+        else if (random == 2 && Gfacing !=GRIGHT)
         {
             Gfacing = GLEFT;
         }
-        else if (random == 3)
+        else if (random == 3 && Gfacing !=GLEFT)
         {
             Gfacing = GRIGHT;
         }
