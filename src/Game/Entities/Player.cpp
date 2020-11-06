@@ -46,10 +46,10 @@ int Player::getScore(){
 }
 
 void Player::tick(){
-    if(eatGhost == true){
+    if(em->eatGhost == true){
         counter++;
         if(counter == 450){
-            eatGhost = false;
+            em->eatGhost = false;
             counter = 0;
         }
     }
@@ -198,17 +198,17 @@ void Player::checkCollisions(){
                 score+= 10;
             }else if( dynamic_cast<BigDot*>(entity)){
                 score += 50;
-                eatGhost = true;
-                em->seteatGhost(eatGhost);
+                em->eatGhost = true;
                 counter = 0;
             }
             else if(dynamic_cast<Ghost*>(entity)){
-                if(eatGhost == false){
+                if(em->eatGhost == false){
                 die();
                 }
-                else if(eatGhost == true){
+                else if(em->eatGhost == true){
                     entity->remove = true;
                     score += 200;
+                    GhostSpawner::ghostCounter++;
                 }
             }
 
@@ -231,6 +231,4 @@ void Player::SetHealth(int health){
     this->health = health;
 }
 
-bool Player::geteatGhost(){
-    return eatGhost;
-}
+

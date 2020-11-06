@@ -24,7 +24,6 @@ class Player: public Entity{
         int speed = 8;
         bool walking = false;
         bool trespassing = false;
-        bool eatGhost = false;
         FACING facing = DOWN;
         ofImage up, down, left, right;
         Animation *walkUp;
@@ -37,7 +36,6 @@ class Player: public Entity{
     
         Player(int, int, int , int, EntityManager*);
         int getHealth();
-        bool geteatGhost();
         void die();
         void SetHealth(int health);
         int getScore();
