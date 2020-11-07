@@ -5,17 +5,14 @@ GameState::GameState()
 {
 	mapImage.load("images/map1.png");
 	map = MapBuilder().createMap(mapImage);
-	gameMusic.load("images/gameMusic.wav");
-	// gameMusic.play();
 
 }
 void GameState::tick()
 {
-	gameMusic.setLoop(loop);
+	
 	if (map->getPlayer()->getHealth() == 0)
 	{
-		loop = false;
-		gameMusic.setLoop(loop);
+	
 		finalScore = map->getPlayer()->getScore();
 		setNextState("GameOverState");
 		setFinished(true);

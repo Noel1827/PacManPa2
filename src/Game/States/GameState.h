@@ -19,7 +19,6 @@ public:
 
 private:
 	ofImage mapImage;
-	ofSoundPlayer gameMusic;
 	Map *map;
 	bool loop = true;
 };

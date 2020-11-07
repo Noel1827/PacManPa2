@@ -30,6 +30,7 @@ class Player: public Entity{
         Animation *walkLeft;
         Animation *walkRight;
         EntityManager* em;
+        ofSoundPlayer gameOver;
 
     public:
     

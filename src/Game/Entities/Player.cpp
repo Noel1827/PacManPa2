@@ -10,6 +10,7 @@ Player::Player(int x, int y, int width, int height, EntityManager* em) : Entity(
     up.cropFrom(sprite, 0, 32, 16, 16);
     left.cropFrom(sprite, 0, 16, 16, 16);
     right.cropFrom(sprite, 0, 0, 16, 16);
+    gameOver.load("images/gameOver.mp3");
     
     vector<ofImage> downAnimframes;
     vector<ofImage> upAnimframes;
@@ -108,7 +109,8 @@ void Player::render(){
         sum += 20;
     }
     ofSetColor(248,171,186);
-    ofDrawBitmapString("Press 'f' to ignore all bounds, Pac-Man can still die",0, 45);
+    ofDrawBitmapString("WARINIG CODE IS PRONE TO CRASH WHEN USING THIS POWERUP", 0, 45);
+    ofDrawBitmapString("Press 'f' to ignore all bounds, Pac-Man can still die",0, 55);
 }
 
 void Player::keyPressed(int key)
@@ -204,6 +206,7 @@ void Player::checkCollisions(){
             else if(dynamic_cast<Ghost*>(entity)){
                 if(em->eatGhost == false){
                 die();
+                gameOver.play();
                 }
                 else if(em->eatGhost == true){
                     entity->remove = true;

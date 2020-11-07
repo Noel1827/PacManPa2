@@ -8,7 +8,7 @@ class MenuState : public State {
 private:
 	ofImage img1;
 	ofImage pacman;
-	ofSoundPlayer pacmanS;
+	ofSoundPlayer gameMusic;
 	Button *startButton;
 	bool loop = true;
 

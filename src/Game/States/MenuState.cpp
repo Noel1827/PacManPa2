@@ -3,11 +3,11 @@
 MenuState::MenuState() {
 	startButton = new Button(ofGetWidth()/2, ofGetHeight()/2, 64, 50, "Start");
 	pacman.load("images/pacmanM.jpg");
-	pacmanS.load("images/pacmanS.wav");
-	// pacmanS.play();
+	gameMusic.load("images/gameMusic.wav");
+	gameMusic.play();
 }
 void MenuState::tick() {
-	pacmanS.setLoop(loop);
+	gameMusic.setLoop(loop);
 	startButton->tick();
 	if(startButton->wasPressed()){
 		setNextState("Game");
@@ -26,7 +26,7 @@ void MenuState::keyPressed(int key){
 
 void MenuState::mousePressed(int x, int y, int button){
 	startButton->mousePressed(x, y);
-	loop = false;
+	// loop = false;
 }
 
 void MenuState::reset(){
