@@ -17,7 +17,7 @@ class Ghost: public Entity{
 private:
     bool canMove;
     GhostFACING Gfacing = GUP;
-    int speed = 3;
+    int speed = 2;
     EntityManager *em;
     int counter = 0;
     int flashing = 0;
