@@ -16,5 +16,6 @@ public:
 
 private:
     EntityManager *em;
+    int spawnCounter = 0;
     
 };
