@@ -14,7 +14,6 @@ public:
 	void mousePressed(int x, int y, int button);
 	void keyReleased(int key);
 	int getScore();
-	// int getlives();
 	int finalScore;
 
 

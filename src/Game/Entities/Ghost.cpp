@@ -20,7 +20,7 @@ Ghost::Ghost(int x, int y, int width, int height, ofImage spriteSheet, string co
 
 void Ghost::tick()
 {
-
+    
     if (em->eatGhost)
     {
         
@@ -116,46 +116,9 @@ void Ghost::checkCollisions()
     }
 }
 
-// void Ghost::move()
-// {
-//     canMove = true;
-
-//     if (canMove)
-//     {
-//         if (Gfacing == GUP){
-//             y -= speed;
-//         }
-//         else if (Gfacing == GDOWN){
-//             y += speed;
-//         }
-//         else if (Gfacing == GLEFT){
-//             x -= speed;
-//         }
-//         else if (Gfacing == GRIGHT){
-//             x += speed;
-//         }
-//     }else{
-
-//         int random = ofRandom(4);
-//         if(random == 0){
-//             Gfacing = GUP;
-//         } else if(random == 1){
-//             Gfacing = GDOWN;
-//         }else if(random == 2){
-//             Gfacing = GLEFT;
-//         }else if(random == 3){
-//             Gfacing = GRIGHT;
-//         }
-//     }
-
-// }
-
 void Ghost::render()
 {
     
     Entity::render();
 
 }
-
-// Dark blue sprite.cropFrom(spriteSheet, 584, 64, 16,16);
-// White ghosts sprite.cropFrom(spriteSheet, 617, 64, 16,16);

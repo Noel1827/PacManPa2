@@ -24,7 +24,6 @@ private:
     ofImage white;
     ofImage blue;
     ofImage originalSprite;
-    // Animation flashing;
 
 public:
     Ghost(int, int, int, int, ofImage, string, EntityManager *);

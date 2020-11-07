@@ -17,8 +17,7 @@ class Player: public Entity{
 	int health = 3;
     const int RESPAWNXPOS = 312;
     const int RESPAWNYPOS = 624;
-    int counter = 0;
-    // Cambiar los lives a "health "
+    int counter = 0; 
         long int score = 0;
         bool canMove;
         int speed = 8;

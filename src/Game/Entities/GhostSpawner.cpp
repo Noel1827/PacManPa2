@@ -12,7 +12,6 @@ GhostSpawner::GhostSpawner(int x, int y, int width, int height, ofImage spriteSh
      em->entities.push_back(BlueGhost);
      Ghost *PinkGhost = new Ghost(x,y, width, height, sprite, "pink", em);
      em->entities.push_back(PinkGhost);
-    // ghostCounter = 0;
 }
 
 void GhostSpawner::tick(){
