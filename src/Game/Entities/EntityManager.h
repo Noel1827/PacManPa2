@@ -10,5 +10,9 @@ public:
 	std::vector<Block*> blocks;
 	void tick();
 	void render();
+	bool geteatGhost();
+	void seteatGhost(bool flashing);
+	bool eatGhost = false;
+	int GhostCounter = 0;
 
 };

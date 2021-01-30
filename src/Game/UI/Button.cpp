@@ -30,7 +30,7 @@ void Button::mousePressed(int x, int y){
     if(xPos + width >= x && x >= xPos &&  yPos + height >= y && y >= yPos){
         pressed = true;
         pressedCounter = 10;
-    }
+ }
 }
 
 void Button::render(){

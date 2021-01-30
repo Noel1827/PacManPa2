@@ -1,6 +1,5 @@
 #pragma once
 #include "Animation.h"
-
 #include "EntityManager.h"
 
 enum FACING {
@@ -13,11 +12,17 @@ enum FACING {
 class Player: public Entity{
 
     private:
-        int health;
-        int score = 0;
+    int PermanentX;
+	int sum;
+	int health = 3;
+    const int RESPAWNXPOS = 312;
+    const int RESPAWNYPOS = 624;
+    int counter = 0; 
+        long int score = 0;
         bool canMove;
         int speed = 8;
         bool walking = false;
+        bool trespassing = false;
         FACING facing = DOWN;
         ofImage up, down, left, right;
         Animation *walkUp;
@@ -25,10 +30,14 @@ class Player: public Entity{
         Animation *walkLeft;
         Animation *walkRight;
         EntityManager* em;
+        ofSoundPlayer gameOver;
 
     public:
+    
         Player(int, int, int , int, EntityManager*);
         int getHealth();
+        void die();
+        void SetHealth(int health);
         int getScore();
         void tick();
         void render();

@@ -10,6 +10,7 @@ Player::Player(int x, int y, int width, int height, EntityManager* em) : Entity(
     up.cropFrom(sprite, 0, 32, 16, 16);
     left.cropFrom(sprite, 0, 16, 16, 16);
     right.cropFrom(sprite, 0, 0, 16, 16);
+    gameOver.load("images/gameOver.mp3");
     
     vector<ofImage> downAnimframes;
     vector<ofImage> upAnimframes;
@@ -41,11 +42,18 @@ Player::Player(int x, int y, int width, int height, EntityManager* em) : Entity(
     
 }
 
-// int Player::getScore(){
-//     return score;
-// }
+int Player::getScore(){
+    return score;
+}
 
 void Player::tick(){
+    if(em->eatGhost == true){
+        counter++;
+        if(counter == 450){
+            em->eatGhost = false;
+            counter = 0;
+        }
+    }
     canMove = true;
     checkCollisions();
     if(canMove){
@@ -66,9 +74,8 @@ void Player::tick(){
 }
 
 void Player::render(){
-    ofSetColor(256,256,256);
-    ofDrawBitmapString("Score:" + to_string(score),ofGetWidth()-100,20);
-    // ofDrawRectangle(getBounds());
+    ofSetColor(256, 256, 256);
+    ofDrawBitmapString("Score:" + to_string(score), ofGetWidth() - 100, 20);
     if(facing == UP){
         walkUp->getCurrentFrame().draw(x, y, width, height);
         
@@ -79,22 +86,65 @@ void Player::render(){
     }else if(facing == RIGHT){
         walkRight->getCurrentFrame().draw(x, y, width, height);
     }
+
+    PermanentX = 10;
+    sum = 0;
+    // draws Pacman's lives
+    for (int i = 0; i < health; i++)
+    {
+        // sets the colors to red, green, or yellow depending on pacman's life
+        switch (health)
+        {
+        case 1:
+            ofSetColor(255, 0, 0);
+            break;
+        case 2:
+            ofSetColor(255, 255, 0);
+            break;
+        case 3:
+            ofSetColor(0, 255, 0);
+            break;
+        }
+        ofDrawCircle(PermanentX + sum, 20, 10);
+        sum += 20;
+    }
+    ofSetColor(248,171,186);
+    ofDrawBitmapString("WARINIG CODE IS PRONE TO CRASH WHEN USING THIS POWERUP", 0, 45);
+    ofDrawBitmapString("Press 'f' to ignore all bounds, Pac-Man can still die",0, 55);
 }
 
-void Player::keyPressed(int key){
-    switch(key){
-        case 'w':
-            setFacing(UP);
+void Player::keyPressed(int key)
+{
+    switch (key)
+    {
+    case 'w':
+        setFacing(UP);
+        break;
+    case 's':
+        setFacing(DOWN);
+        break;
+    case 'a':
+        setFacing(LEFT);
+        break;
+    case 'd':
+        setFacing(RIGHT);
+        break;
+    case 'n':
+        die();
+        // health++;
+        break;
+    case 'f':
+        trespassing = !trespassing;
+        break;
+    case 'm':
+        // this switch is so that the integer lives won't be negative
+        switch (health)
+        {
+        case 0:
             break;
-        case 's':
-            setFacing(DOWN);
-            break;
-        case 'a':
-            setFacing(LEFT);
-            break;
-        case 'd':
-            setFacing(RIGHT);
-            break;
+        default:
+            health--;
+        }
     }
 }
 
@@ -112,6 +162,7 @@ void Player::setFacing(FACING facing){
 }
 
 void Player::checkCollisions(){
+    if(trespassing == false){
     for(Block* block: em->blocks){
         switch(facing){
             case UP:
@@ -136,6 +187,10 @@ void Player::checkCollisions(){
                 break;
         }
     }
+    }
+    else if(trespassing == true){
+        canMove = true;
+    }
     for(Entity* entity:em->entities){
         if(collides(entity)){
             if(dynamic_cast<Dot*>(entity) || dynamic_cast<BigDot*>(entity)){
@@ -144,9 +199,39 @@ void Player::checkCollisions(){
             if(dynamic_cast<Dot*>(entity)){
                 score+= 10;
             }else if( dynamic_cast<BigDot*>(entity)){
-                score += 20;
+                score += 50;
+                em->eatGhost = true;
+                counter = 0;
             }
+            else if(dynamic_cast<Ghost*>(entity)){
+                if(em->eatGhost == false){
+                die();
+                gameOver.play();
+                }
+                else if(em->eatGhost == true){
+                    entity->remove = true;
+                    score += 200;
+                    em->GhostCounter++;
+                }
+            }
+
         }
     }
     
 }
+
+void Player::die(){
+    health--;
+    this->x = RESPAWNXPOS;
+    this->y = RESPAWNYPOS;
+}
+
+int Player::getHealth(){
+    return health;
+}
+
+void Player::SetHealth(int health){
+    this->health = health;
+}
+
+

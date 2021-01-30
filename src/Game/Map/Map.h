@@ -7,6 +7,7 @@ class Map{
       Map(EntityManager*);
       void addBlock(Block*);
       void addEntity(Entity*);
+      Player* getPlayer();
       void setPlayer(Player*);
       void tick();
       void render();

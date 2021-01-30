@@ -3,6 +3,7 @@
 #include "EntityManager.h"
 #include "Ghost.h"
 
+
 class GhostSpawner : public Entity
 {
 public:
@@ -15,4 +16,6 @@ public:
 
 private:
     EntityManager *em;
+    int spawnCounter = 0;
+    
 };
